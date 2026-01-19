@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Logistic Regression – Student Pass Prediction Web App</title>
+   
 </head>
 <body>
 
