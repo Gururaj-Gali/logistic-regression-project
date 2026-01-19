@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Pass Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>📊 Student Pass Prediction</h2>
+
+    <input type="number" id="hours" placeholder="Study Hours">
+    <input type="number" id="attendance" placeholder="Attendance %">
+
+    <button onclick="predict()">Predict</button>
+
+    <h3 id="result"></h3>
+</div>
+
+<script>
+function predict() {
+    let hours = document.getElementById("hours").value;
+    let attendance = document.getElementById("attendance").value;
+
+    fetch("/predict", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            study_hours: hours,
+            attendance: attendance
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").innerText = data.prediction;
+    });
+}
+</script>
+
+</body>
+</html>
